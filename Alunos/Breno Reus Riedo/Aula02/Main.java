@@ -10,12 +10,9 @@ public class Main {
 
 
     private static void menu(){
-        int userChoice = 0;
-        printMenu(); //Função para evitar bloco de codigo enorme do println
-
-        while (userChoice != 3) {
-            userChoice = input.nextInt();
-            printMenu();
+        while (true) {
+            printMenu(); //Função para evitar bloco de codigo enorme do println
+            int userChoice = input.nextInt();
 
             switch (userChoice) {
                 case 1:
@@ -24,6 +21,8 @@ public class Main {
                 case 2:
                     calcTroco();
                     break;
+                case 3:
+                    return;
                 default:
                     System.out.println("Não é uma opção válida!");
                     break;
@@ -66,7 +65,7 @@ public class Main {
                         """
                         [1] - Calcular Preço Total
                         [2] - Calcular Troco
-                        [3] - Sair
+                        [3] - Sair\
                         """
                 );
     }
