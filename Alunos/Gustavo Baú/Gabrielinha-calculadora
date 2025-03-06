@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class CalculadoraVenda {
+
+    // Função para calcular o preço total
+    public static double calcularPrecoTotal(int quantidade, double precoUnitario) {
+        return quantidade * precoUnitario;
+    }
+
+    // Função para calcular o troco
+    public static double calcularTroco(double valorPago, double valorTotal) {
+        return valorPago - valorTotal;
+    }
+
+    // Função para exibir o menu
+    public static void exibirMenu() {
+        System.out.println("Escolha uma opção:");
+        System.out.println("[1] - Calcular Preço Total");
+        System.out.println("[2] - Calcular Troco");
+        System.out.println("[3] - Sair");
+    }
+
+    public static void main(String[] args) {
+        // Criação do scanner para ler as entradas do usuário
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            // Exibe o menu para o usuário
+            exibirMenu();
+            System.out.print("Digite a opção desejada: ");
+            int opcao = scanner.nextInt();
+
+            // Caso a opção seja 1, calcula o preço total
+            if (opcao == 1) {
+                System.out.print("Digite a quantidade de plantas: ");
+                int quantidade = scanner.nextInt();
+                System.out.print("Digite o preço unitário da planta: ");
+                double precoUnitario = scanner.nextDouble();
+                double precoTotal = calcularPrecoTotal(quantidade, precoUnitario);
+                System.out.printf("O preço total da venda é: R$%.2f%n%n", precoTotal);
+
+            // Caso a opção seja 2, calcula o troco
+            } else if (opcao == 2) {
+                System.out.print("Digite o valor pago pelo cliente: ");
+                double valorPago = scanner.nextDouble();
+                System.out.print("Digite o valor total da compra: ");
+                double valorTotal = scanner.nextDouble();
+                double troco = calcularTroco(valorPago, valorTotal);
+                System.out.printf("O troco a ser dado ao cliente é: R$%.2f%n%n", troco);
+
+            // Caso a opção seja 3, encerra o programa
+            } else if (opcao == 3) {
+                System.out.println("Saindo...");
+                break;
+
+            // Caso a opção seja inválida, exibe uma mensagem de erro
+            } else {
+                System.out.println("Opção inválida. Tente novamente.\n");
+            }
+        }
+
+        // Fecha o scanner ao final
+        scanner.close();
+    }
+}
