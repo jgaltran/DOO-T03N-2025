@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
-public class CalculadoraVenda {
+public class Calculadora {
 
     public static double calcularPrecoTotal(int quantidade, double precoUnitario) {
         return quantidade * precoUnitario;
     }
-
+ 
     public static double calcularTroco(double valorPago, double valorTotal) {
         return valorPago - valorTotal;
     }
