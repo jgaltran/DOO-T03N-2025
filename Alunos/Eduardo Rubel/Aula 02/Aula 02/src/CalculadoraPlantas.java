@@ -6,7 +6,6 @@ public class CalculadoraPlantas {
         int opcao;
 
         do {
-            // Menu
             System.out.println("Bem-vindo a Calculadora da Gabrielinha!");
             System.out.println("[1] - Calcular Preco Total");
             System.out.println("[2] - Calcular Troco");
