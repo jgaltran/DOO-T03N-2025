@@ -1,18 +1,20 @@
 import java.util.Scanner;
-
-public class floricultura {
+public class Floricultura {
 
 	public static void main(String[] args) {
 
 	Scanner Scan = new Scanner(System.in);
 	double totalSoma = 0;
 	
-		System.out.println("Bem-Vindo a Floricultura Gabrielinha's \n");
+		System.out.println("BEEM-VINDOS" 
+		 + "Floricultura Gabrielinha's \n");
+
 		System.out.println("MENU:");
+
         System.out.println(" "
         		+ "   [1] - Calcular Preço Total\r\n"
         		+ "    [2] - Calcular Troco    \r\n"
-        		+ "    [3] - Sair");
+        		+ "    [3] - Sair \n");
         int opcao = Scan.nextInt();
         
         
