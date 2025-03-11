@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int option;
+        int opcao = 0;
 
         while (opcao != 3) {
             System.out.println("Menu:");
@@ -13,20 +13,17 @@ public class Main {
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
 
-            if (opcao ==1) {
-                    calcularPrecoTotal(scanner);
-            }
-            else if (opcao == 2) {
-                    calcularTroco(scanner);
-            }
-            else if (opcao == 3) { 
-                    System.out.println("Saindo...");
-            }
-            else {
-                    System.out.println("Opção inválida");
+            if (opcao == 1) {
+                calcularPrecoTotal(scanner);
+            } else if (opcao == 2) {
+                calcularTroco(scanner);
+            } else if (opcao == 3) {
+                System.out.println("Saindo...");
+            } else {
+                System.out.println("Opção inválida");
             }
         }
-    
+
         scanner.close();
     }
 

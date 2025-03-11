@@ -1,5 +1,0 @@
-public class Ola {
-static void main(){
-system.out.println('Olá Mundo');
-}
-}
