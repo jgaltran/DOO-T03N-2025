@@ -1,4 +1,4 @@
-package Alunos.Gabriel.Aula03;
+package Aula03;
 
 import java.util.ArrayList;
 import java.util.List;
