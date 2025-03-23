@@ -1,17 +1,17 @@
 package Alunos.Braian.Aula04;
 
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-class Venda {
+class Transacao {
     private int quantidade;
     private double precoUnitario;
     private double valorTotal;
     private double desconto;
     private String data;
 
-    public Venda(int quantidade, double precoUnitario, String data) {
+    public Transacao(int quantidade, double precoUnitario, String data) {
         this.quantidade = quantidade;
         this.precoUnitario = precoUnitario;
         this.data = data;
@@ -45,39 +45,9 @@ class Venda {
     }
 }
 
-class RegistroVendas {
-    private List<Venda> vendas;
-
-    public RegistroVendas() {
-        this.vendas = new ArrayList<>();
-    }
-
-    public void adicionarVenda(Venda venda) {
-        vendas.add(venda);
-    }
-
-    public List<Venda> getVendas() {
-        return vendas;
-    }
-
-    public void exibirRegistro() {
-        if (vendas.isEmpty()) {
-            System.out.println("Nenhuma venda registrada ainda.");
-            return;
-        }
-        System.out.println("Registro de Vendas:");
-        for (Venda venda : vendas) {
-            System.out.println("Quantidade: " + venda.getQuantidade() +
-                    " | Preço Unitário: R$ " + venda.getPrecoUnitario() +
-                    " | Valor Total: R$ " + venda.getValorTotal() +
-                    " | Desconto: R$ " + venda.getDesconto());
-        }
-    }
-}
-
-public class calculadoraRenovada {
+class SistemaDeVendas {
     private static Scanner scanner = new Scanner(System.in);
-    private static RegistroVendas registroVendas = new RegistroVendas();
+    private static List<Transacao> transacoes = new ArrayList<>();
 
     public static void main(String[] args) {
         menu();
@@ -98,16 +68,17 @@ public class calculadoraRenovada {
                     calcularTroco();
                     break;
                 case 3:
-                    registroVendas.exibirRegistro();
+                    exibirRegistroVendas();
                     break;
                 case 4:
-                    quantidadeVendasDiaria();
+                    quantidadeVendasDiarias();
                     break;
                 case 5:
-                    quantidadeVendasTotal();
+                    quantidadeVendasTotais();
                     break;
                 case 6:
-                    System.out.println("Encerrando o programa");
+                    System.out.println("Encerrando o programa...");
+                    break;
                 default:
                     System.out.println("Opção inválida.");
             }
@@ -120,8 +91,8 @@ public class calculadoraRenovada {
         System.out.println("1 - Registrar Venda");
         System.out.println("2 - Calcular Troco");
         System.out.println("3 - Exibir Registro de Vendas");
-        System.out.println("4 - Quantidade Venda Total Diária");
-        System.out.println("5 - Quantidade Vendas Total Mensal");
+        System.out.println("4 - Quantidade de Vendas Diárias");
+        System.out.println("5 - Quantidade de Vendas Totais");
         System.out.println("6 - Sair");
     }
 
@@ -132,16 +103,16 @@ public class calculadoraRenovada {
         System.out.print("Digite o preço unitário da planta: ");
         double precoUnitario = scanner.nextDouble();
 
-        scanner.nextLine(); // Limpar o buffer
+        scanner.nextLine();
         System.out.print("Digite a data da venda (formato dd/MM/yyyy): ");
         String data = scanner.nextLine();
 
-        Venda venda = new Venda(quantidade, precoUnitario, data);
-        registroVendas.adicionarVenda(venda);
+        Transacao transacao = new Transacao(quantidade, precoUnitario, data);
+        transacoes.add(transacao);
 
-        System.out.println("Valor total a pagar: R$ " + venda.getValorTotal());
-        if (venda.getDesconto() > 0) {
-            System.out.println("Desconto de 5% aplicado: R$ " + venda.getDesconto());
+        System.out.println("Valor total a pagar: R$ " + transacao.getValorTotal());
+        if (transacao.getDesconto() > 0) {
+            System.out.println("Desconto de 5% aplicado: R$ " + transacao.getDesconto());
         }
     }
 
@@ -156,24 +127,39 @@ public class calculadoraRenovada {
         System.out.println("O troco a ser dado é: R$ " + troco);
     }
 
-    private static void quantidadeVendasDiaria() {
+    private static void exibirRegistroVendas() {
+        if (transacoes.isEmpty()) {
+            System.out.println("Nenhuma venda registrada ainda.");
+            return;
+        }
+        System.out.println("Registro de Vendas:");
+        for (Transacao transacao : transacoes) {
+            System.out.println("Quantidade: " + transacao.getQuantidade() +
+                    " | Preço Unitário: R$ " + transacao.getPrecoUnitario() +
+                    " | Valor Total: R$ " + transacao.getValorTotal() +
+                    " | Desconto: R$ " + transacao.getDesconto() +
+                    " | Data: " + transacao.getData());
+        }
+    }
+
+    private static void quantidadeVendasDiarias() {
         scanner.nextLine();
         System.out.print("Digite a data que deseja verificar (formato dd/MM/yyyy): ");
         String data = scanner.nextLine();
         int quantidade = 0;
-        for (Venda venda : registroVendas.getVendas()) {
-            if (venda.getData().equals(data)) {
-                quantidade += venda.getQuantidade();
+        for (Transacao transacao : transacoes) {
+            if (transacao.getData().equals(data)) {
+                quantidade += transacao.getQuantidade();
             }
         }
         System.out.println("Quantidade de vendas no dia " + data + ": " + quantidade);
     }
 
-    private static void quantidadeVendasTotal() {
+    private static void quantidadeVendasTotais() {
         int quantidade = 0;
-        for (Venda venda : registroVendas.getVendas()) {
-            quantidade += venda.getQuantidade();
+        for (Transacao transacao : transacoes) {
+            quantidade += transacao.getQuantidade();
         }
-        System.out.println("Quantidade de vendas mensal " + quantidade);
+        System.out.println("Quantidade de vendas totais: " + quantidade);
     }
 }
