@@ -1,26 +1,23 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class Main {
-    public static Scanner scanner = new Scanner(System.in);
-    public static HashMap<String, Integer> registroPlantas = new HashMap<String, Integer>();
+    public static final Map<Object, Integer> vendasDiarias = new HashMap<>();
+    public static final Scanner scanner = new Scanner(System.in);
+    public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public static void main(String[] args) {
-        menu();
-
-
-    }
-
-    static void menu() {
         int escolha = 0;
         while (escolha != 4) {
             System.out.println("[1] - Comprar/calcular preço \n" + "[2] - Calcular Troco \n" + "[3] - Vendas  \n" + "[4] - Sair");
             escolha = scanner.nextInt();
             switch (escolha) {
                 case 1:
-                    total();
+                    registrarVendas();
                     break;
                 case 2:
                     troco();
@@ -38,43 +35,43 @@ public class Main {
         }
     }
 
+    private static void registrarVendas() {
+        LocalDate dataVenda = null;
+        while (dataVenda == null) {
+            System.out.println("Digite a data da venda (dd/MM/yyyy): ");
+            String dataStr = scanner.next();
+            try {
+                dataVenda = LocalDate.parse(dataStr, formatter);
+            } catch (DateTimeParseException e) {
+                System.out.println("Data inválida! Formato que devera ser feito!: dd/MM/yyyy. Tente novamente.");
+            }
+        }
 
-    public static void total() {
+        System.out.println("Digite a quantidade de vendas: ");
+        float quantidade = scanner.nextFloat();
 
-        int quantidade = 0;
-        float temp = 0;
-        float valorTotal = 0;
-
-        System.out.println("Calculadora de preços \n" + "Digite a Quantidade de plantas que você irá comprar:");
-        quantidade = scanner.nextInt();
         System.out.println("Digite o valor unitario de cada planta:");
         float valor = scanner.nextFloat();
 
-        System.out.println("Informe o dia (DD) da compra: ");
-        String dia = scanner.next();
-        System.out.println("Informe o mês (MM) da compra: ");
-        String mes = scanner.next();
-
-        String chave = mes + "-" + dia;
-        registroPlantas.put(chave, registroPlantas.getOrDefault(chave, 0) + quantidade);
-        registroPlantas.put(chave, (int) (registroPlantas.getOrDefault(chave, 0) + valorTotal));
 
         float valorBruto = valor * quantidade;
-        valorTotal = valorBruto;
+        float valorTotal = valorBruto;
 
         if (quantidade > 10) {
-            temp = (valorBruto * 5) / 100;
+            float temp = (valorBruto * 5) / 100;
             valorTotal = valorBruto - temp;
-            System.out.println("Você comprou mais de 10 unidades então ganhara 5% de desconto o valor ficou R$: " + valorTotal);
+            System.out.println("Você comprou mais de 10 unidades então ganhara 5% de desconto o valor ficou R$: " +
+                    String.format("%.2f", valorTotal));
         } else {
             System.out.println("O valor total da compra foi de R$: " + valorBruto);
         }
 
 
-        System.out.println("Vendas registradas com sucesso!");
+        vendasDiarias.put(dataVenda, (int) (vendasDiarias.getOrDefault(dataVenda, 0) + quantidade));
+        System.out.println("Venda registrada com sucesso!");
     }
 
-    public static void troco() {
+    private static void troco() {
         System.out.println("Calculadora de trocos \n " + "Digite o valor recebido do cliente:");
         float Dcliente = scanner.nextFloat();
         System.out.println("Digite o valor da compra do cliente:");
@@ -83,20 +80,22 @@ public class Main {
         float troco = Dcliente - valorCompra;
 
         System.out.println("O troco serÁ de R$: " + troco);
-
     }
 
-    public static void vendas() {
-        int cont = 1;
+    private static void vendas() {
+        LocalDate dataConsulta = null;
+        while (dataConsulta == null) {
+            System.out.println("Digite a data para consultar (dd/MM/yyyy): ");
+            String dataStr = scanner.next();
+            try {
+                dataConsulta = LocalDate.parse(dataStr, formatter);
+            } catch (DateTimeParseException e) {
+                System.out.println("Data inválida! Formato que devera ser feito!: dd/MM/yyyy. Tente novamente.");
+            }
+        }
 
-        System.out.println("Informe o mês (MM) da compra: ");
-        String mes = scanner.next();
-        System.out.println("Informe o dia (DD) da compra: ");
-        String dia = scanner.next();
-        String chave = mes + "-" + dia;
-        int quantidade = registroPlantas.getOrDefault(chave, 0);
-
-        System.out.println("Total de vendas no dia " + dia + "/" + mes + ": " + quantidade + " plantas ");
+        int totalVendas = vendasDiarias.getOrDefault(dataConsulta, 0);
+        System.out.println("Total de vendas no dia " + dataConsulta.format(formatter) + ": " + totalVendas + " plantas ");
     }
 
 }
