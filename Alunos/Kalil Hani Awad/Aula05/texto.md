@@ -52,7 +52,7 @@ parent_child(X, Y) :- mother_child(X, Y).
 
 ## Comparação
 
-Podemos concluir que o Java sendo **paradigma imperativo** tende a ser mais estruturado, buscando trazer e seguir uma ordem baseada na resolução de uma tarefa (no caso do exemplo era somar dois valores dentro de duas variaveis do tipo inteiro e mostrar ao usuario o resultado da soma), enquanto Prolog sendo **paradigma declarativo** tende a penas a disser o que deve ocorrer sem explicar quais etapas devem ser feitas para chegar naquele resultado (o objetico era encontrar parentes por parte de mãe e/ou pai).
+Podemos concluir que o Java sendo **paradigma imperativo** tende a ser mais estruturado, assim buscando trazer e seguir uma ordem baseada na resolução de uma tarefa (no caso do exemplo era somar dois valores dentro de duas variaveis do tipo inteiro e mostrar ao usuario o resultado da soma), enquanto Prolog sendo **paradigma declarativo** tende a penas a disser o que deve ocorrer sem explicar quais etapas devem ser feitas para chegar naquele resultado (o objetico era encontrar parentes por parte de mãe e/ou pai).
 
   
 
