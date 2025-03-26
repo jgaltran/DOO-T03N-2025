@@ -1,17 +1,18 @@
-#***Paradigma Imperativo***
-No ***paradigma imperativo***, o **foco** está em **como** um programa **deve realizar** suas tarefas. Isso envolve a **manipulação de estados** e a **execução de comandos sequenciais**. **Linguagens** como ***Java*** são tipicamente **imperativas**, onde o programador **especifica** uma sequência de **instruções** que o computador **deve seguir**.
+#**Paradigma Imperativo**
+
+O foco está em como um programa deve realizar suas tarefas. Isso envolve a manipulação de estados e a execução de comandos sequenciais. **Linguagens** como ***Java*** são tipicamente **imperativas**, onde o programador especifica uma sequência de instruções que o computador deve seguir.
 
 ---
 
-#***Paradigma Declarativo***
+#**Paradigma Declarativo**
 
-No **paradigma declarativo**, o foco está em o que **deve** ser feito, em vez de **como fazê-lo**. O programador **descreve** as propriedades desejadas do **resultado**, e o **sistema** é **responsável** por determinar como **alcançá-las**. ***Prolog*** é um exemplo de uma **linguagem declarativa**, onde o **programador** define **fatos e regras**, e o sistema realiza a **inferência**.
+O foco está em o que deve ser feito, em vez de como fazê-lo. O programador descreve as propriedades desejadas do resultado, e o sistema é responsável por determinar como alcançá-las. **Prolog** é um exemplo de uma **linguagem declarativa**, onde o programador define fatos e regras, e o sistema realiza a inferência.
 
 ---
 
 ## **Exemplo Comparativo**
 
-### 1. **Código declarativo em Prolog**
+1. **Código declarativo em Prolog**
 
 Agora, vamos **criar** um exemplo em ***Prolog*** que **também** calcula a **soma dos números** de **1 a N**, mas utilizando **uma abordagem** mais **imperativa**.
 ---
