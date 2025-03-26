@@ -32,17 +32,19 @@ soma(N, S) :- N > 0, N1 is N - 1, soma(N1, S1), S is S1 + N. % Regra recursiva
 
 1. **Código imperativo em Java**
 
-`import java.util.stream.IntStream;
-
-public class SomaDeclarativa {
+`public class SomaImperativa {
     public static void main(String[] args) {
-        int N = 10; // Definindo o valor de N
-        int soma = IntStream.rangeClosed(1, N) // Cria um stream de números de 1 a N
-                            .sum(); // Calcula a soma
-
-        System.out.println("A soma de 1 a " + N + " é: " + soma); // Exibe o resultado
+        int N = 10;
+        int soma = 0;
+        
+        for (int i = 1; i <= N; i++) {
+            soma += i;
+        }
+        
+        System.out.println("A soma de 1 a " + N + " é: " + soma);
     }
-}`
+}
+`
 
 Em Java, podemos usar a API de Streams para criar um código que calcula a soma dos números de 1 a N de forma declarativa.
 
