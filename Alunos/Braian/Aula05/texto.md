@@ -30,6 +30,8 @@ soma(N, S) :- N > 0, N1 is N - 1, soma(N1, S1), S is S1 + N. % Regra recursiva
 
 ## Exemplo de Código Imperativo em Java
 
+1. **Código imperativo em Java**
+
 `import java.util.stream.IntStream;
 
 public class SomaDeclarativa {
