@@ -14,27 +14,17 @@ O foco está em o que deve ser feito, em vez de como fazê-lo. O programador des
 
 1. **Código declarativo em Prolog**
 
-Agora, vamos **criar** um exemplo em ***Prolog*** que **também** calcula a **soma dos números** de **1 a N**, mas utilizando **uma abordagem** mais **imperativa**.
----
-`public class Soma {
-    public static void main(String[] args) {
-        int N = 10; // Definindo o valor de N
-        int soma = 0; // Inicializando a variável soma
+`soma(0, 0). % Caso base: a soma de 0 é 0
+soma(N, S) :- N > 0, N1 is N - 1, soma(N1, S1), S is S1 + N. % Regra recursiva
 
-        for (int i = 1; i <= N; i++) { // Loop de 1 até N
-            soma += i; // Adiciona i à soma
-        }
+% Para consultar a soma de 1 a N, você pode usar:
+% ?- soma(10, S).`
 
-        System.out.println("A soma de 1 a " + N + " é: " + soma); // Exibe o resultado
-    }
-}`
----
-> **Como funciona:**
+> **Como funciona**:
 
-1. A regra soma/2 inicia o cálculo chamando soma_helper/3, passando N, um acumulador inicial (0) e a variável que armazenará o resultado.
-2. soma_helper/3 tem um caso base que diz que se N é 0, o acumulador (Acc) é o resultado (S).
-3. Se N é maior que 0, ele decrementa N, adiciona N ao acumulador e chama recursivamente soma_helper/3.
-4. Para calcular a soma, você faz uma consulta, como soma(10, S), e o Prolog resolve a consulta.
+- Define-se um fato base que diz que a soma de 0 é 0.
+- A regra soma(N, S) define que, se N for maior que 0, a soma de N é a soma de N-1 mais N.
+- Para calcular a soma, você faz uma consulta, como soma(10, S), e o Prolog resolve a consulta usando a inferência.
 
 --- 
 
@@ -82,7 +72,7 @@ Agora, vamos **criar** um exemplo em ***Prolog*** que **também** calcula a **so
 
 --- 
 
-## Exemplo de Código Declarativo em Java
+## Exemplo de Código Imperativo em Java
 
 `import java.util.stream.IntStream;
 
@@ -104,22 +94,6 @@ Em Java, podemos usar a API de Streams para criar um código que calcula a soma 
 - Utiliza IntStream.rangeClosed(1, N) para criar um fluxo de números de 1 a N.
 - O método sum() é chamado no fluxo para calcular a soma de todos os números.
 - Por fim, imprime o resultado.
-
---- 
-
-## Exemplo de Código Declarativo em Prolog
-
-`soma(0, 0). % Caso base: a soma de 0 é 0
-soma(N, S) :- N > 0, N1 is N - 1, soma(N1, S1), S is S1 + N. % Regra recursiva
-
-% Para consultar a soma de 1 a N, você pode usar:
-% ?- soma(10, S).`
-
-> **Como funciona**:
-
-- Define-se um fato base que diz que a soma de 0 é 0.
-- A regra soma(N, S) define que, se N for maior que 0, a soma de N é a soma de N-1 mais N.
-- Para calcular a soma, você faz uma consulta, como soma(10, S), e o Prolog resolve a consulta usando a inferência.
 
 --- 
 
@@ -148,10 +122,3 @@ soma(N, S) :- N > 0, N1 is N - 1, soma(N1, S1), S is S1 + N. % Regra recursiva
 - **Java**: O uso de Streams torna o código mais conciso e legível, permitindo que o programador se concentre no que deseja fazer, em vez de como fazê-lo.
 
 - **Prolog**: A lógica declarativa permite que o programador defina claramente as relações e regras, tornando o código fácil de entender em termos de lógica.
-
-
-
-
-
-
-
