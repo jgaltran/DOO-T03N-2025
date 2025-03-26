@@ -14,11 +14,13 @@ O foco está em o que deve ser feito, em vez de como fazê-lo. O programador des
 
 ### **Código declarativo em Prolog**
 
-`soma(0, 0). % Caso base: a soma de 0 é 0
+`
+soma(0, 0). % Caso base: a soma de 0 é 0
 soma(N, S) :- N > 0, N1 is N - 1, soma(N1, S1), S is S1 + N. % Regra recursiva
 
 % Para consultar a soma de 1 a N, você pode usar:
-% ?- soma(10, S).`
+% ?- soma(10, S).
+`
 
 > **Como funciona**:
 
@@ -32,7 +34,8 @@ soma(N, S) :- N > 0, N1 is N - 1, soma(N1, S1), S is S1 + N. % Regra recursiva
 
 ### **Código imperativo em Java**
 
-`public class SomaImperativa {
+`
+public class SomaImperativa {
     public static void main(String[] args) {
         int N = 10;
         int soma = 0;
@@ -43,7 +46,8 @@ soma(N, S) :- N > 0, N1 is N - 1, soma(N1, S1), S is S1 + N. % Regra recursiva
         
         System.out.println("A soma de 1 a " + N + " é: " + soma);
     }
-}`
+}
+`
 
 Em Java, podemos usar a API de Streams para criar um código que calcula a soma dos números de 1 a N de forma declarativa.
 
