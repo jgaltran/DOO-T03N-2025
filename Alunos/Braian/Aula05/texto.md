@@ -12,7 +12,7 @@ O foco está em o que deve ser feito, em vez de como fazê-lo. O programador des
 
 ## **Exemplo Comparativo**
 
-1. **Código declarativo em Prolog**
+###. **Código declarativo em Prolog**
 
 `soma(0, 0). % Caso base: a soma de 0 é 0
 soma(N, S) :- N > 0, N1 is N - 1, soma(N1, S1), S is S1 + N. % Regra recursiva
@@ -30,7 +30,7 @@ soma(N, S) :- N > 0, N1 is N - 1, soma(N1, S1), S is S1 + N. % Regra recursiva
 
 ## Exemplo de Código Imperativo em Java
 
-1. **Código imperativo em Java**
+###. **Código imperativo em Java**
 
 `public class SomaImperativa {
     public static void main(String[] args) {
