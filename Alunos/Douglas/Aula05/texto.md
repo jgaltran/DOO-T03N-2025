@@ -7,7 +7,7 @@ A programação pode ser tratada sob diversos paradigmas, cada um proporcionando
 O paradigma imperativo é definido por comandos sequenciais que orientam o computador a executar uma tarefa passo a passo. A ênfase recai sobre o procedimento, empregando comandos que alteram o estado do programa por meio de variáveis e estruturas de controle, como loops e condicional.
 
 ### Exemplo em Java
-
+```java
 public class Fatorial {
     public static int calcularFatorial(int n) {
         int resultado = 1;
@@ -22,6 +22,7 @@ public class Fatorial {
         System.out.println("Fatorial de " + numero + ": " + calcularFatorial(numero));
     }
 }
+```
 
 Neste exemplo, o cálculo fatorial é realizado de maneira iterativa, utilizando um loop for para acumular o resultado. O foco está na sequência de operações realizadas.
 
@@ -31,6 +32,7 @@ O paradigma declarativo foca no o que fazer em vez de como fazer. O programador 
 
 ### Exemplo em Prolog
 
+```prolog
 fatorial(0, 1).
 fatorial(N, F) :-
     N > 0,
@@ -39,6 +41,7 @@ fatorial(N, F) :-
     F is N * F1.
 
 ?- fatorial(5, Resultado).
+```
 
 Neste exemplo, o cálculo do fatorial é realizado de forma recursiva, descrevendo relações entre valores em vez de detalhar as operações. O Prolog busca resolver a expressão com base nas regras definidas.
 
