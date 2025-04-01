@@ -1,14 +1,14 @@
-#Trabalho diferença entre paradigmas
+# Trabalho diferença entre paradigmas
 
-##Definição paradigmas na programação
+## Definição paradigmas na programação
 Os paradigmas de programação são formas de abordar e resolver problemas ao escrever código, funcionando como metodologias ou estilos de programação. Eles não são linguagens de programação, mas sim maneiras de estruturar a lógica e a solução dos problemas por meio do código. Cada linguagem de programação é criada com base em determinados paradigmas e segue um conjunto de regras específicas para sua implementação.
 
 
-##Paradigma imperativo
+## Paradigma imperativo
 O paradigma imperativo é uma forma de programar que se concentra em dar instruções claras sobre como realizar uma tarefa. Pode-se mudar o valor das coisas conforme necessário, tomar decisões e repetir ações diversas vezes.
 
 **Exemplo código com paradigma imperativo:**
-
+````
 import java.util.Scanner;
 
 public class Multiplicacao {
@@ -33,7 +33,7 @@ public class Multiplicacao {
         scanner.close();
     }
 }
-
+````
 **Explicação do código:**
 
 Main(String[] args) → Ponto de entrada do programa. O Java sempre inicia a execução pelo método main.
@@ -53,11 +53,11 @@ Concatenação (+ resultado) → Junta o texto "O resultado da multiplicação �
 
 
 
-##Paradigma declarativo
+## Paradigma declarativo
 O paradigma declarativo é um paradigma de programação que foca em descrever o que deve ser alcançado, em vez de como alcançá-lo. Em vez de fornecer uma sequência de instruções detalhadas, o programador declara as propriedades e relações que o resultado final deve ter. 
 
 **Exemplo de código com paradigma declarativo:**
-
+````
 % Regra para realizar a multiplicação
 multiplicar(Num1, Num2, Resultado) :- 
     Resultado is Num1 * Num2.
@@ -71,7 +71,7 @@ main :-
     multiplicar(Num1, Num2, Resultado),
     write('O resultado da multiplicação é: '), 
     write(Resultado), nl.
-
+````
 
 **Explicação do código:**
 
