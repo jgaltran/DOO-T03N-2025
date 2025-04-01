@@ -17,7 +17,7 @@ public class VerificaPar {
     public static void main(String[] args) {
         System.out.println(ehPar(4)); // Saída: true
     }
-}
+}```
 
 O código em Java demonstra o paradigma **imperativo**, no qual o programador define, passo a passo, **como** o problema deve ser resolvido.
 
@@ -42,4 +42,4 @@ par(N) :- 0 is N mod 2.
 ?- par(4).
 true.
 
-O trecho de código em Prolog abaixo define uma **regra simples** para verificar se um número é par
+O trecho de código em Prolog abaixo define uma **regra simples** para verificar se um número é par```
