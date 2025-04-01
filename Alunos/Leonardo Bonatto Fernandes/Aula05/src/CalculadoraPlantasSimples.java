@@ -40,7 +40,6 @@ public class CalculadoraPlantasSimples {
             this.valor = valor;
         }
     }
-
     private static void registrarVenda(Scanner scanner, List<Venda> vendas) {
         System.out.print("Dia: ");
         int dia = scanner.nextInt();
