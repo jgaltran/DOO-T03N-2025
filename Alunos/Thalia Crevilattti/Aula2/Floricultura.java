@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.List;
 public class Floricultura {
 
 	public static void main(String[] args) {
@@ -6,7 +7,7 @@ public class Floricultura {
 	Scanner Scan = new Scanner(System.in);
 	double totalSoma = 0;
 	
-		System.out.println("BEEM-VINDOS" 
+		System.out.println("\n BEM-VINDOS \r\n" 
 		 + "Floricultura Gabrielinha's \n");
 
 		System.out.println("MENU:");
@@ -14,7 +15,9 @@ public class Floricultura {
         System.out.println(" "
         		+ "   [1] - Calcular Preço Total\r\n"
         		+ "    [2] - Calcular Troco    \r\n"
-        		+ "    [3] - Sair \n");
+        		+ "    [3] - Configurações de Histórico\r\n"
+				+ "    [4] - Sair do sitema \r\n");
+
         int opcao = Scan.nextInt();
         
         
@@ -25,6 +28,12 @@ public class Floricultura {
         	
         	System.out.println("Valor do item:\n");
         	double valor = Scan.nextFloat();
+
+			if (quant > 10) { // 10% de desconto 
+				double desconto = valor * 0.10;
+				System.out.println("Desconto de 10%: " + desconto);
+				valor = valor - desconto;
+			}
         	 
         	
 			totalSoma = quant * valor;
@@ -43,8 +52,7 @@ public class Floricultura {
         	double troco = receb - total;
         	
         	System.out.println("Devolver ao cliente: " + troco);
-        	
-        	
+
         } else {
         	System.out.println("...Saindo do Sistema"
         			+ "Aguarde...");
