@@ -84,3 +84,7 @@ Write → exibe uma mensagem no console.
 Read → captura o valor digitado e unifica com Num1.
 
 Multiplicar(Num1, Num2, Resultado)→ prolog verifica a relação e encontra Resultado.
+
+## Conclusão
+Os paradigmas de programação influenciam diretamente a forma como os desenvolvedores escrevem e organizam seus códigos. O paradigma imperativo se concentra na execução de instruções passo a passo, enquanto o declarativo foca na definição de regras e relações para que o próprio sistema resolva o problema. Ambos têm suas vantagens e são usados conforme a necessidade do projeto. Compreender essas abordagens permite escolher a melhor estratégia para desenvolver soluções eficientes e organizadas.
+
