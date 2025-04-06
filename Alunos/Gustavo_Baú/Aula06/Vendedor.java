@@ -6,14 +6,14 @@ import java.util.List;
 public class Vendedor {
     private String nome;
     private int idade;
-    private Loja loja;  // Correção: "Loja" com L maiúsculo
+    private Loja loja;
     private double salarioBase;
     private List<Double> salarioRecebido;
 
     public Vendedor(String nome, int idade, Loja loja, double salarioBase) {
         this.nome = nome;
         this.idade = idade;
-        this.loja = loja;  // Correção: "loja" com l minúsculo
+        this.loja = loja;
         this.salarioBase = salarioBase;
         this.salarioRecebido = new ArrayList<>();
         this.salarioRecebido.add(salarioBase);

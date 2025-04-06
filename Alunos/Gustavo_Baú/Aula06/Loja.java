@@ -9,7 +9,7 @@ public class Loja {
     private List<Vendedor> vendedores;
     private List<Cliente> clientes;
 
-    public Loja(String nomeFantasia, String razaoSocial, String cnpj) {
+    public Loja(String nomeFantasia, String cnpj) {
         this.nomeFantasia = nomeFantasia;
         this.cnpj = cnpj;
         this.vendedores = new ArrayList<>();
@@ -34,6 +34,14 @@ public class Loja {
 
     public int contarVendedores() {
         return vendedores.size();
+    }
+
+    public List<Vendedor> getVendedores() {
+        return vendedores;
+    }
+    
+    public List<Cliente> getClientes() {
+        return clientes;
     }
 
     public void apresentarSe() {
