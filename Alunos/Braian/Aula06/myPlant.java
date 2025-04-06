@@ -21,7 +21,7 @@ public class myPlant {
   public void main(String[] args) {
   menu();
   }
-  
+
   public void menu(){
   Scanner scanner = new Scanner(System.in);
   int opcao = 0;
@@ -31,25 +31,39 @@ public class myPlant {
         scanner.nextLine();
 
         switch(opcao){
-          case 1  -> contarClientes();
-          case 2  -> contarVendedores();
-          case 3  -> apresentarSe();
-          case 4 -> {
+
+        case 1  -> cadastrarClientes();
+
+        case 2  -> cadastrarVendedores();
+
+        case 3  -> contarClientes();
+
+        case 4  -> contarVendedores();
+
+        case 5 -> {
             if (!listaVendedores.isEmpty()) {
                 listaVendedores.get(0).calcularMedia();
             }
         }
-        case 5 -> {
+        case 6 -> {
             if (!listaVendedores.isEmpty()) {
                 listaVendedores.get(0).calcularBonus();
             }
         }
-        case 6 -> {
+        case 7 -> apresentarSe();
+
+        case 8 -> {
             if (!listaClientes.isEmpty()) {
                 listaClientes.get(0).apresentarSe();
             }
           }
-        case 7  -> System.out.println("Encerrando...");
+        case 9 -> {
+            if (!listaVendedores.isEmpty()) {
+                listaVendedores.get(0).apresentarSe();
+            }
+          }
+
+        case 10  -> System.out.println("Encerrando...");
 
         default -> System.out.println("Opção inválida!");
         }
@@ -62,8 +76,12 @@ public class myPlant {
     System.out.println("Digite 2 para: cadastrar um vendedor");
     System.out.println("Digite 3 para: contar clientes cadastrados");
     System.out.println("Digite 4 para: contar vendedores cadastrados");
-    System.out.println("Digite 5 para: apresentar-se como vendedor ou cliente");
-    System.out.println("Digite 6 para: sair do sistema");
+    System.out.println("Digite 5 para: calcular a média dos salários dos vendedores");
+    System.out.println("Digite 6 para: calcular o bônus dos vendedores");
+    System.out.println("Digite 7 para: apresentar-se como empresa");
+    System.out.println("Digite 8 para: apresentar-se como cliente");
+    System.out.println("Digite 9 para: apresentar-se como vendedor");
+    System.out.println("Digite 10 para: sair do sistema");
   }
   public myPlant(String atributos, String nomeFantasia, String razaoSocial, String cnpj, String cidade, String bairro, String rua, String vendedores, String clientes){
     this.atributos = atributos;
@@ -131,7 +149,7 @@ public class myPlant {
         this.clientes = clientes;
       }
 
-  private static void contarClientes(){
+  private static void cadastrarClientes(){
     Scanner scanner = new Scanner(System.in);
     scanner.close();
     System.out.println("Digite o nome do cliente: ");
@@ -150,10 +168,12 @@ public class myPlant {
     listaClientes.add(cliente);
 
     System.out.println("Cliente cadastrado com sucesso!");
-    System.out.println("Total de clientes cadastrados: " + listaClientes.size());
     scanner.close();
   }
-  private static void contarVendedores(){
+  private static void contarClientes(){
+    System.out.println("Total de clientes cadastrados: " + listaClientes.size());
+  }
+  private static void cadastrarVendedores(){
     Scanner scanner = new Scanner(System.in);
     scanner.close();
     System.out.println("Digite o nome do vendedor: ");
@@ -179,9 +199,10 @@ public class myPlant {
     listaVendedores.add(vendedor);
 
     System.out.println("Vendedor cadastrado com sucesso!");
-    System.out.println("Total de clientes cadastrados: " + listaVendedores.size());
   }
-
+  private static void contarVendedores(){
+    System.out.println("Total de vendedores cadastrados: " + listaVendedores.size());
+  }
   public void apresentarSe(){
     System.out.println("Olá, nome fantasia da empresa é " + this.nomeFantasia);
     System.out.println("A razão social é:" + this.razaoSocial);
