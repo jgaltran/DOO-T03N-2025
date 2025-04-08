@@ -5,6 +5,7 @@ import java.util.List;
 public class Vendedor {
     private String nome;
     private int idade;
+    private Loja loja;
     private String cidade;
     private String bairro;
     private String rua;
@@ -12,9 +13,10 @@ public class Vendedor {
     private List<BigDecimal> salarioRecebido;
 
 
-    public Vendedor(String nome, int idade, String cidade, String bairro, String rua, BigDecimal salarioBase, List<BigDecimal> salarioRecebido) {
+    public Vendedor(String nome, int idade, Loja loja, String cidade, String bairro, String rua, BigDecimal salarioBase, List<BigDecimal> salarioRecebido) {
         this.nome = nome;
         this.idade = idade;
+        this.loja = loja;
         this.cidade = cidade;
         this.bairro = bairro;
         this.rua = rua;
@@ -36,6 +38,14 @@ public class Vendedor {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+    public Loja getLoja() {
+        return loja;
+    }
+
+    public void setLoja(Loja loja) {
+        this.loja = loja;
     }
 
     public String getCidade() {
@@ -92,9 +102,8 @@ public class Vendedor {
         return salarioBase.multiply(new BigDecimal("0.2"));
     }
 
-    //TODO
     public void apresentarSe(){
-
+        System.out.println("Nome: " + nome + " \n" + "Idade: " + idade +" \n" + "Loja: " + loja.getRazaoSocial());
     }
 
 }

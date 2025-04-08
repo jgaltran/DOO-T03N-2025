@@ -27,6 +27,7 @@ public class Main {
 
         Vendedor vendedorBrenno = new Vendedor("Brenno César Bernardes",
                 44,
+                lojaMyPlant,
                 "Rio de Janeiro",
                 "Santa Cruz",
                 "Rua Vinte e Cinco",
@@ -48,6 +49,9 @@ public class Main {
 
         System.out.println("\033[1;97;5mMétodo apresentaSe do clienteGael:\033[0m ");
         clienteGael.apresentarSe();
+
+        System.out.println("\033[1;97;5mMétodo apresentaSe do vendedorBrenno:\033[0m ");
+        vendedorBrenno.apresentarSe();
 
         System.out.println("\033[1;97;5mMétodo calcularMedia do vendedorBrenno:\033[0m ");
         System.out.println("R$" + vendedorBrenno.calcularMedia() + " Média");
