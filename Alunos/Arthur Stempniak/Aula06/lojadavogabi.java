@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import objetos.cliente;
 import objetos.loja;
 import objetos.vendedor;
 
@@ -12,6 +13,7 @@ public class lojadavogabi {
     static HashMap<String, Integer> vendasPorDia = new HashMap<>();
     static ArrayList<loja> lojas = new ArrayList<>();
     static loja lojaAtual;  // Loja atual selecionada
+    static ArrayList<cliente> clientes = new ArrayList<>();  // Lista de clientes
 
     public static void main(String[] args) {
 
@@ -45,7 +47,10 @@ public class lojadavogabi {
                     "\n6) Exibir Vendedores" +
                     "\n7) Criar Nova Loja" +
                     "\n8) Selecionar Loja" +
-                    "\n9) Sair");
+                    "\n9) Criar Novo Cliente" +
+                    "\n10) Exibir Clientes" +
+                    "\n11) Exibir Vendas do Cliente" +
+                    "\n12) Sair");
 
             escolha = scan.nextInt();
 
@@ -90,6 +95,15 @@ public class lojadavogabi {
 
             } else if (escolha == 3) {
                 System.out.println("Você escolheu registrar uma venda.");
+
+                // Escolher o cliente
+                System.out.println("Escolha o cliente:");
+                for (int i = 0; i < clientes.size(); i++) {
+                    System.out.println((i + 1) + ") " + clientes.get(i).getNome());
+                }
+                int escolhaCliente = scan.nextInt();
+                cliente clienteEscolhido = clientes.get(escolhaCliente - 1);
+
                 System.out.print("Informe a quantidade de plantas: ");
                 int qtdProdutos = scan.nextInt();
                 System.out.print("Informe o preço da planta: ");
@@ -111,8 +125,12 @@ public class lojadavogabi {
 
                 vendasPorDia.put(chave, vendasPorDia.getOrDefault(chave, 0) + qtdProdutos);
 
-                vendas.add("Venda: Quantidade = " + qtdProdutos + ", Total = R$ " + total + ", Desconto = R$ " + desconto);
-                System.out.printf("Venda registrada com sucesso! Total com desconto (se houver): R$ %.2f\n", total);
+                String venda = "Venda: Quantidade = " + qtdProdutos + ", Total = R$ " + total + ", Desconto = R$ " + desconto;
+
+                // Registrar a venda no cliente
+                clienteEscolhido.adicionarVenda(venda);
+                vendas.add(venda);
+                System.out.printf("Venda registrada com sucesso para o cliente %s! Total com desconto (se houver): R$ %.2f\n", clienteEscolhido.getNome(), total);
             }
 
             else if (escolha == 4) {
@@ -126,51 +144,35 @@ public class lojadavogabi {
                 }
             }
 
-            else if (escolha == 5) {
-                System.out.print("Informe o dia (DD): ");
-                String dia = scan.next();
-                System.out.print("Informe o mês (MM): ");
-                String mes = scan.next();
-                String chave = dia + "-" + mes;
-
-                if (vendasPorDia.containsKey(chave)) {
-                    System.out.printf("Quantidade total de vendas em %s: %d\n", chave, vendasPorDia.get(chave));
-                } else {
-                    System.out.println("Nenhuma venda registrada para essa data.");
-                }
-            }
-
-            else if (escolha == 6) {
-                System.out.println("Exibindo vendedores da loja:");
-                lojaAtual.exibirVendedores();
-            }
-
-            else if (escolha == 7) {
-                System.out.println("Criando uma nova loja...");
-                System.out.print("Informe o nome da loja: ");
-                String nomeLoja = scan.next();
-                System.out.print("Informe o endereço da loja: ");
-                String enderecoLoja = scan.next();
-                loja novaLoja = new loja(nomeLoja, enderecoLoja);
-                lojas.add(novaLoja);
-                System.out.println("Nova loja criada com sucesso!");
-            }
-
-            else if (escolha == 8) {
-                System.out.println("Escolha a loja:");
-                for (int i = 0; i < lojas.size(); i++) {
-                    System.out.println((i + 1) + ") " + lojas.get(i).getNome());
-                }
-                int escolhaLoja = scan.nextInt();
-                if (escolhaLoja >= 1 && escolhaLoja <= lojas.size()) {
-                    lojaAtual = lojas.get(escolhaLoja - 1);
-                    System.out.println("Loja selecionada: " + lojaAtual.getNome());
-                } else {
-                    System.out.println("Opção inválida.");
-                }
-            }
-
             else if (escolha == 9) {
+                System.out.println("Criando um novo cliente...");
+                System.out.print("Informe o nome do cliente: ");
+                scan.nextLine(); // Para consumir a linha restante
+                String nomeCliente = scan.nextLine();
+                System.out.print("Informe o CPF do cliente: ");
+                String cpfCliente = scan.nextLine();
+                System.out.print("Informe o telefone do cliente: ");
+                String telefoneCliente = scan.nextLine();
+                System.out.print("Informe o endereço do cliente: ");
+                String enderecoCliente = scan.nextLine();
+
+                cliente novoCliente = new cliente(nomeCliente, cpfCliente, telefoneCliente, enderecoCliente);
+                clientes.add(novoCliente);
+                System.out.println("Cliente criado com sucesso!");
+            }
+
+            else if (escolha == 11) {
+                // Exibir vendas de um cliente
+                System.out.println("Escolha o cliente para exibir as vendas:");
+                for (int i = 0; i < clientes.size(); i++) {
+                    System.out.println((i + 1) + ") " + clientes.get(i).getNome());
+                }
+                int escolhaCliente = scan.nextInt();
+                cliente clienteEscolhido = clientes.get(escolhaCliente - 1);
+                clienteEscolhido.exibirVendas();
+            }
+
+            else if (escolha == 12) {
                 System.out.println("Saindo... Até logo!");
                 loop = false;
             }
