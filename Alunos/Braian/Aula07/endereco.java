@@ -1,18 +1,17 @@
 package Alunos.Braian.Aula07;
 
-
- class endereco{
+ class Endereco{
     private String estado;
     private String cidade;
     private String bairro;
+    private String nomeRua;
     private Integer numeroRua;
     private String complemento;
 
-    public endereco(String estado, String cidade, String bairro, Integer numeroRua, String complemento){
+    public Endereco(String estado, String cidade, String bairro, String nomeRua, Integer numeroRua, String complemento){
         this.estado = estado;
         this.cidade = cidade;
         this.bairro = bairro;
-        this.cidade = cidade;
         this.numeroRua = numeroRua;
         this.complemento = complemento;
       }
@@ -24,6 +23,9 @@ package Alunos.Braian.Aula07;
           }
           public String getBairro(){
             return bairro;
+          }
+          public String getNomeRua(){
+            return nomeRua;
           }
           public Integer getNumeroRua(){
             return numeroRua;
@@ -47,8 +49,8 @@ package Alunos.Braian.Aula07;
             this.complemento = complemento;
           }
 
-    public void apresentarLogradouro(){
-
-    }
+          public void apresentarLogradouro() {
+            System.out.println("Endereço: " + this.nomeRua + ", nº " + this.numeroRua + " - " + this.bairro + ", " + this.cidade + " - " + this.estado + ". " + this.complemento);
+          }
 
  }
