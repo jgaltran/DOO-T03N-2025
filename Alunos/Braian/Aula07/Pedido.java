@@ -1,3 +1,8 @@
+package Alunos.Braian.Aula07;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Pedido {
   private int id;
   private Date dataCriacao;

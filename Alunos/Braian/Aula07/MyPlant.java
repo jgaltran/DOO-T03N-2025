@@ -1,5 +1,6 @@
 package Alunos.Braian.Aula07;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public class MyPlant {
@@ -23,13 +24,12 @@ public class MyPlant {
   System.out.println("1 - Criar pedido");
   System.out.println("2 - Sair");
   }
-
   public static void criarPedido(){
-  Item item1 = new Item("leve,frágil", 1, "Caneca", "Utilidade", 25.0);
-  Item item2 = new Item("pesado,grande", 2, "Monitor", "Eletrônico", 800.0);
+  Item item1 = new Item(1,"Orquídea","leve", 25.0);
+  Item item2 = new Item(2,"Cacto",  "resistente", 80.0);
   Item[] itens = new Item[]{item1, item2};
 
-  Pedido pedido1 = new Pedido("pedido", 1, new Date(), new Date(), new Date(), "Carlos", "João", "Loja 1", itens);
+  Pedido pedido1 = new Pedido(1, new Date(17/10/2024), new Date(23/10/2024), new Date(10/04/2025), "Carlos", "João", "Loja 1", itens);
   pedido1.gerarDescricaoVenda();
   pedido1.calcularValorTotal();
   }
