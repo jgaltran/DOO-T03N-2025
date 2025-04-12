@@ -15,17 +15,37 @@ public class Endereco {
     this.complemento = complemento;
   }
 
-  public String getEstado() { return estado; }
-  public String getCidade() { return cidade; }
-  public String getBairro() { return bairro; }
-  public Integer getNumeroRua() { return numeroRua; }
-  public String getComplemento() { return complemento; }
+  public String getEstado(){
+    return estado;
+  }
+  public String getCidade(){
+    return cidade;
+  }
+  public String getBairro(){
+    return bairro;
+  }
+  public Integer getNumeroRua(){
+    return numeroRua;
+  }
+  public String getComplemento(){
+    return complemento;
+  }
 
-  public void setEstado(String estado) { this.estado = estado; }
-  public void setCidade(String cidade) { this.cidade = cidade; }
-  public void setBairro(String bairro) { this.bairro = bairro; }
-  public void setNumeroRua(Integer numeroRua) { this.numeroRua = numeroRua; }
-  public void setComplemento(String complemento) { this.complemento = complemento; }
+  public void setEstado(String estado){
+    this.estado = estado;
+  }
+  public void setCidade(String cidade){
+    this.cidade = cidade;
+  }
+  public void setBairro(String bairro){
+    this.bairro = bairro;
+  }
+  public void setNumeroRua(Integer numeroRua){
+    this.numeroRua = numeroRua;
+  }
+  public void setComplemento(String complemento){
+    this.complemento = complemento;
+  }
 
   public void apresentarLogradouro() {
     System.out.println("Endereço: Rua " + numeroRua + ", Bairro: " + bairro + ", Cidade: " + cidade + " - " + estado + ". " + complemento);

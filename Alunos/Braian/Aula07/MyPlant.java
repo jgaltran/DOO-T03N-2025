@@ -26,7 +26,7 @@ public class MyPlant {
   }
   public static void criarPedido(){
   Item item1 = new Item(1,"Orquídea","leve", 25.0);
-  Item item2 = new Item(2,"Cacto",  "resistente", 80.0);
+  Item item2 = new Item(2,"Cacto",  "resistente", 40.0);
   Item[] itens = new Item[]{item1, item2};
 
   Pedido pedido1 = new Pedido(1, new Date(17/10/2024), new Date(23/10/2024), new Date(10/04/2025), "Carlos", "João", "Loja 1", itens);
