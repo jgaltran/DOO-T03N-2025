@@ -11,8 +11,8 @@ public class ProcessaPedido {
                 vendedor, loja, itens);
 
         if (confirmarPagamento(pedido)) {
-            pedido.setDataPagamento(new Date()); // data atual
             System.out.println("Pagamento confirmado com sucesso.");
+            System.out.println("Data de pagamento: " + dataPagamento);
         } else {
             System.out.println("Pagamento não confirmado: reserva vencida.");
         }
@@ -21,7 +21,10 @@ public class ProcessaPedido {
     }
 
     private boolean confirmarPagamento(Pedido pedido) {
-        Date agora = new Date(); // data atual
-        return !agora.after(pedido.getDataVencimentoReserva());
+        if (pedido.getDataPagamento() == null || pedido.getDataPagamento().after(pedido.getDataVencimentoReserva())) {
+            pedido.setDataPagamento(null);
+            return false;
+        }
+        return true;
     }
 }
