@@ -37,10 +37,6 @@ public class Gerente extends Pessoa {
         return salarioBase * 0.35;
     }
 
-    public Loja getLoja() {
-        return loja;
-    }
-
     public void setLoja(Loja loja) {
         this.loja = loja;
     }

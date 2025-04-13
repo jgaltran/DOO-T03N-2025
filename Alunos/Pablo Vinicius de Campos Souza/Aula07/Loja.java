@@ -29,6 +29,7 @@ public class Loja {
     }
 
     public void apresentarSe() {
+        System.out.println("\n=== Dados da Loja ===");
         System.out.println("Nome Fantasia: " + nomeFantasia);
         System.out.println("CNPJ: " + cnpj);
         endereco.apresentarLogradouro();

@@ -19,7 +19,9 @@ public class Vendedor extends Pessoa {
     }
 
     // Sobreescreve o método da super classe com uma função adicional (apresentar a loja)
+    @Override
     public void apresentarSe() {
+        System.out.println("\n=== Dados do Vendedor ===");
         super.apresentarSe();
         if (loja != null) {
             loja.apresentarSe();
