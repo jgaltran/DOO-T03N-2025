@@ -11,8 +11,8 @@ public class MyPlant {
   }
 
   public static void menu() {
-    int opcao = -1;
-    while (opcao != 0) {
+    int opcao = 0;
+    while (opcao != 4) {
       exibirMenu();
       opcao = scanner.nextInt();
       scanner.nextLine();
@@ -20,7 +20,7 @@ public class MyPlant {
         case 1 -> criarPedido();
         case 2 -> apresentarGerente();
         case 3 -> apresentarEndereco();
-        case 0 -> System.out.println("Saindo...");
+        case 4 -> System.out.println("Saindo...");
         default -> System.out.println("Opção inválida!");
       }
     }

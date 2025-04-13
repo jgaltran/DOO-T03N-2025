@@ -26,6 +26,6 @@ public class Item {
     return valor;
   }
   public void gerarDescricao() {
-    System.out.println("Item [ID: " + id + ", Nome: " + nome + ", Tipo: " + tipo + ", Valor: R$" + valor + "]");
+    System.out.println("Item [ID: " + this.id + ", Nome: " + this.nome + ", Tipo: " + this.tipo + ", Valor: R$" + this.valor + "]");
   }
 }
