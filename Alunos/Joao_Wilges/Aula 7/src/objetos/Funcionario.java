@@ -8,8 +8,8 @@ public class Funcionario extends Pessoa {
     private double salarioRecebido3 = 0;
     private int qtd_salario = 3;
     private int contador_salario = 0;
-    public Funcionario(String nome, Loja loja, int idade, String cidade, String rua, String bairro, double salarioBase) {
-        super(nome, idade, cidade, rua, bairro);
+    public Funcionario(String nome, Loja loja, int idade, String cidade, String rua, String bairro, String complemento, String numero, double salarioBase) {
+        super(nome, idade, cidade, rua, bairro, complemento, numero);
     }
 
     public void apresentarse() {
