@@ -53,7 +53,7 @@ public class Loja {
         Double salario_base = scanner.nextDouble();
         Vendedor novo_vendedor = new Vendedor(nome, salario_base);
     }
-    public void excluirVendedor(Scanner scanner, Loja loja) {
+    public void excluirVendedor() {
         System.out.println("Informe o nome do novo vendedor: ");
         String nome = scanner.next();
         Vendedor vendedorParaRemover = null;
