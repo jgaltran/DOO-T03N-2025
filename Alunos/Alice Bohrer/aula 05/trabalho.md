@@ -15,13 +15,13 @@ O imperativo abrange a programação orientada a objetos (OOP), enquanto o decla
 É uma forma de programar que se concentra em dar instruções claras sobre como realizar uma tarefa. Como uma receita, tem um passo a passo a ser feito para concluir a receita. Neste estilo, podemos mudar o valor das coisas conforme a necessidade, fazer calculos, tomar decisões e usar loops. Também pode ser utilizado funções para que o codigo seja reutilizavel. 
 
 
-**Paradigma Descritivo**
+** Paradigma Descritivo **
 
 Foca em descrever o que deve ser feito, mas não como deve ser feito, não fornece instruções detalhadas. O programador declara as propriedades e relações que o resultado final deve ter. 
 
 
 
-###Descrição codigo imperativo - java
+### Descrição codigo imperativo - java
 
 Este é um codigo em java que soma todos os valores de 1 a 10.
 
@@ -46,11 +46,11 @@ Este é um codigo em java que soma todos os valores de 1 a 10.
 }
  ````
 
-###Descrição do codigo  Descritivo - Prolog 
+### Descrição do codigo  Descritivo - Prolog 
 
 Este é um codigo em Prolog que também conta os valores de 1 a 10.
 
-**Codigo Descritivo - Prolog**
+** Codigo Descritivo - Prolog **
 
 
 ````
