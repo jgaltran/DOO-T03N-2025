@@ -2,8 +2,8 @@ package objetos;
 
 public class Cliente extends Pessoa {
 
-    public Cliente(String nome, int idade, String cidade, String bairro, String rua) {
-        super(nome, idade, cidade, rua, bairro);
+    public Cliente(String nome, int idade, String cidade, String bairro, String rua, String complemento, String numero) {
+        super(nome, idade, cidade, rua, bairro, complemento, numero);
     }
     public void apresentarse() {
         System.out.println("Nome: " + super.getNome());
