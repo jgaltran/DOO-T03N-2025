@@ -19,4 +19,8 @@ public class Item {
         System.out.println("Tipo: " + tipo);
         System.out.println("Valor: " + valor);
     }
+
+    public double getValor() {
+        return valor;
+    }
 }

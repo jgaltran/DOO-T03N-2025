@@ -1,9 +1,8 @@
 package fag;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import objetos.Loja;
 
@@ -18,18 +17,81 @@ public class Main {
                     [1] - Menu Lojas
                     [2] - Menu Vendedores
                     [3] - Menu Clientes
-                    [4] - Sair"""
-            );
+                    [4] - Menu Pedidos
+                    [5] - Sair
+                    """);
             int opcao = scanner.nextInt();
             switch (opcao) {
                 case 1 -> exec_menu_lojas(scanner, lista_lojas);
                 case 2 -> exec_menu_vendedores(scanner, lista_lojas);
                 case 3 -> exec_menu_clientes(scanner, lista_lojas);
-                case 4 -> flag = false;
+                case 4 -> exec_menu_pedidos(scanner, lista_lojas);
+                case 5 -> flag = false;
                 default -> System.out.println("Opção inválida");
             }
         }
         scanner.close();
+    }
+
+    public static void exec_menu_pedidos(Scanner scanner, List<Loja> lojas) {
+        System.out.println("Informe o CNPJ da loja: ");
+        String cnpj = scanner.next();
+        Loja loja = localiza_loja(cnpj, lojas);
+
+        if (loja == null) {
+            System.out.println("Loja com CNPJ " + cnpj + " não encontrada.");
+            return;
+        }
+
+        System.out.println("""
+                [1] - Criar Pedido
+                [2] - Remover Pedido
+                [3] - Contar Pedidos
+                [4] - Voltar
+                """);
+        int opcao = scanner.nextInt();
+        switch (opcao) {
+            case 1 -> criar_pedido(scanner, loja);
+            case 2 -> remover_pedido(scanner, loja);
+            case 3 -> contar_pedidos(loja);
+            case 4 -> System.out.println("Voltando ao menu anterior...");
+            default -> System.out.println("Opção inválida.");
+        }
+    }
+
+    public static void criar_pedido(Scanner scanner, Loja loja) {
+        System.out.println("Informe o ID do pedido: ");
+        int id = scanner.nextInt();
+        System.out.println("Informe o nome do cliente: ");
+        String nomeCliente = scanner.next();
+        System.out.println("Informe o vendedor: ");
+        String vendedor = scanner.next();
+        System.out.println("Informe a data de vencimento da reserva (formato: yyyy-MM-dd): ");
+        String dataString = scanner.next();
+
+        Date dataVencimentoReserva;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            dataVencimentoReserva = sdf.parse(dataString);
+            loja.criarPedido(id, nomeCliente, vendedor, dataVencimentoReserva);
+        } catch (ParseException e) {
+            System.out.println("Data inválida. Por favor, use o formato yyyy-MM-dd.");
+        }
+    }
+
+    public static void remover_pedido(Scanner scanner, Loja loja) {
+        System.out.println("Informe o ID do pedido a ser removido: ");
+        int id = scanner.nextInt();
+        if (loja.removerPedido(id)) {
+            System.out.println("Pedido removido com sucesso.");
+        } else {
+            System.out.println("Pedido não encontrado.");
+        }
+    }
+
+    public static void contar_pedidos(Loja loja) {
+        int totalPedidos = loja.contarPedidos();
+        System.out.println("Total de pedidos: " + totalPedidos);
     }
 
     public static void exec_menu_lojas(Scanner scanner, List<Loja> lojas) {
@@ -185,7 +247,7 @@ public class Main {
 
         System.out.println("Informe o salário base do vendedor: ");
         double salarioBase = scanner.nextDouble();
-        loja.cadastrarVendedor(nome, loja, idade, cidade, rua, bairro, complemento, numero, salarioBase);
+        loja.cadastrarVendedor(nome, idade, cidade, rua, bairro, complemento, numero, salarioBase);
     }
 
 

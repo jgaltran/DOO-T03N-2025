@@ -1,7 +1,7 @@
 package objetos.managers;
 
 import objetos.Vendedor;
-import objetos.Loja; // Certifique-se de importar a classe Loja
+import objetos.Loja;
 import java.util.ArrayList;
 
 public class VendedorManager {
