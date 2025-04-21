@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.List;
-public class Floricultura {
+//public class Floricultura {
 
 	public static void main(String[] args) {
 
