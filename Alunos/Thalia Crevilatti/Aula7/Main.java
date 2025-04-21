@@ -11,7 +11,7 @@ public class Main {
         do {
             mostrarMenu();
             opcao = scanner.nextInt();
-            scanner.nextLine();  // Limpar o buffer
+            scanner.nextLine();  
             
             switch (opcao) {
                 case 1:
@@ -39,7 +39,7 @@ public class Main {
 
     public static void criarPedidoManual(Scanner scanner) {
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // Usaremos esse formato para capturar datas
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
             
             // Leitura dos dados
             System.out.println("\n--- Criar Pedido Manual ---");
@@ -47,10 +47,9 @@ public class Main {
             System.out.print("Nome do item: ");
             String nomeItem = scanner.nextLine();
             
-            double preco = lerDouble(scanner, "Preço do item: ");  // Leitura do preço com verificação
-            int numeroItem = lerInt(scanner, "Número do item: ");  // Leitura do número do item com verificação
-            String complementoItem = lerString(scanner, "Complemento do item: ");  // Leitura do complemento do item
-        
+            double preco = lerDouble(scanner, "Preço do item: "); 
+            int numeroItem = lerInt(scanner, "Número do item: "); 
+            String complementoItem = lerString(scanner, "Complemento do item: ");  
             System.out.print("Estado do item: ");
             String estadoItem = scanner.nextLine();
             System.out.print("Cidade do item: ");

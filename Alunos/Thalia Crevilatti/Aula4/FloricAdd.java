@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FloricAdd {
+//public class FloricAdd {
     private static List<String> flores = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 

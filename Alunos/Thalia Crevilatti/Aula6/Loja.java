@@ -1,6 +1,6 @@
 // classe loja
 
-public class Loja {
+//public class Loja {
     private String nomeFantasia;
     private String razaoSocial;
     private String cnpj;
