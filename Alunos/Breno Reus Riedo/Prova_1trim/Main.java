@@ -103,15 +103,14 @@ public class Main {
                 System.out.println("Esse livro é raro? y/n");
                 String userChoice = input.readLine();
 
-                Raridade raridade = Raridade.COMUM;
-                String explicacao = "";
                 if (userChoice.equalsIgnoreCase("y")) {
-                    raridade = Raridade.RARO;
                     System.out.println("Digite a explicação o porque é raro");
-                    explicacao = input.readLine();
+                    String explicacao = input.readLine();
+                    biblioteca.addLivro(new LivroRaro(tituloLivro, nomeAutor, descricao, true, explicacao));
+                    return;
                 }
 
-                biblioteca.addLivro(new Livro(tituloLivro, nomeAutor, descricao + (raridade != Raridade.COMUM ? " -- Esse livro é raro porque: " + explicacao : ""), raridade, true));
+                biblioteca.addLivro(new Livro(tituloLivro, nomeAutor, descricao,true));
 
                 System.out.println("Livro cadastrado com sucesso!");
                 return;
@@ -209,8 +208,8 @@ public class Main {
                     System.out.println("Livro não disponivel!");
                     return;
                 }
-                if(livroEscolhido.getRaridade() == Raridade.RARO){
-                    System.out.println("Livro não poder ser emprestado pois é raro");
+                if(livroEscolhido instanceof LivroRaro){
+                    System.out.println("Livro não pode ser emprestado pois é raro");
                     return;
                 }
 

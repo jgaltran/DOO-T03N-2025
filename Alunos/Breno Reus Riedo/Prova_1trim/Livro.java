@@ -1,20 +1,16 @@
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class Livro {
     private String tituloLivro;
     private String nomeAutor;
     private String descricaoLivro;
-    private Raridade raridade;
     private boolean disponibilidade;
     private LocalDate ultimaDataEmprestado;
 
-
-    public Livro(String tituloLivro, String nomeAutor, String descricaoLivro, Raridade raridade, boolean disponibilidade){
+    public Livro(String tituloLivro, String nomeAutor, String descricaoLivro, boolean disponibilidade){
         this.tituloLivro = tituloLivro;
         this.nomeAutor = nomeAutor;
         this.descricaoLivro = descricaoLivro;
-        this.raridade = raridade;
         this.disponibilidade = disponibilidade;
     }
 
@@ -41,14 +37,6 @@ public class Livro {
         this.descricaoLivro = descricaoLivro;
     }
 
-    public Raridade getRaridade() {
-        return raridade;
-    }
-
-    public void setRaridade(Raridade raridade) {
-        this.raridade = raridade;
-    }
-
     public boolean isDisponivel() {
         return disponibilidade;
     }
@@ -65,9 +53,8 @@ public class Livro {
         return ultimaDataEmprestado;
     }
 
-
     @Override
     public String toString() {
-        return "Titulo: " + tituloLivro + "\n" + "Autor: " + nomeAutor + "\n" + "Descrição: " + descricaoLivro + "\n" + "Raridade: " + raridade + "\n" + "Disponibilidade: " + disponibilidade;
+        return "Titulo: " + tituloLivro + "\n" + "Autor: " + nomeAutor + "\n" + "Descrição: " + descricaoLivro + "\n" + "Disponibilidade: " + disponibilidade;
     }
 }
