@@ -107,7 +107,7 @@ public class MyPlant2 {
 
         double precoTotal = quantidade * precoUnitario;
         if (quantidade > 10) {
-            double desconto = precoTotal * 0.05; 
+            double desconto = precoTotal * 0.05;
             precoTotal -= desconto;
             System.out.println("Desconto aplicado: " + desconto);
         }
@@ -178,7 +178,7 @@ public class MyPlant2 {
     private static void criarPedido(Scanner scanner) {
         System.out.print("Digite o ID do pedido: ");
         int id = scanner.nextInt();
-        Date dataCriacao = new Date(); 
+        Date dataCriacao = new Date();
         System.out.print("Digite a data de pagamento (dd/mm/yyyy): ");
         String dataPagamentoStr = scanner.next();
         System.out.print("Digite a data de vencimento da reserva (dd/mm/yyyy): ");
@@ -272,7 +272,7 @@ class Vendedor {
     }
 
     public double calcularBonus() {
-        return salarioBase * 0.35; 
+        return salarioBase * 0.35;
     }
 
     public String getNome() {
@@ -315,7 +315,7 @@ class Gerente {
     }
 
     public double calcularBonus() {
-        return salarioBase * 0.35; 
+        return salarioBase * 0.35;
     }
 }
 
@@ -405,26 +405,26 @@ class Endereco {
 }
 
 class Item {
-        private int id;
-        private String nome;
-        private String tipo;
-        private double valor;
-    
-        public Item(int id, String nome, String tipo, double valor) {
-            this.id = id;
-            this.nome = nome;
-            this.tipo = tipo;
-            this.valor = valor;
-        }
-    
-        public void gerarDescricao() {
-            System.out.println("ID: " + id + ", Nome: " + nome + ", Tipo: " + tipo + ", Valor: " + valor);
-        }
-    
-        public double getValor() {
-            return valor;
-        }
+    private int id;
+    private String nome;
+    private String tipo;
+    private double valor;
+
+    public Item(int id, String nome, String tipo, double valor) {
+        this.id = id;
+        this.nome = nome;
+        this.tipo = tipo;
+        this.valor = valor;
     }
+
+    public void gerarDescricao() {
+        System.out.println("ID: " + id + ", Nome: " + nome + ", Tipo: " + tipo + ", Valor: " + valor);
+    }
+
+    public double getValor() {
+        return valor;
+    }
+}
 
 class Pedido {
     private int id;
