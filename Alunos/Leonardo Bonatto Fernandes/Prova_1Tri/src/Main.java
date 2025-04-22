@@ -14,8 +14,7 @@ public class Main {
             System.out.println("Digite 5 para Realizar Empréstimo");
             System.out.println("Digite 6 para Realizar Devolução");
             System.out.println("Digite 7 para Verificar Disponibilidade");
-            System.out.println("Digite 8 para Buscar livro por Cliente");
-            System.out.println("Digite  para  Sair");
+            System.out.println("Digite 8 para  Sair");
 
             int opcao = scanner.nextInt();
             scanner.nextLine();
