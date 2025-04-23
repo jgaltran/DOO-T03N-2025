@@ -18,6 +18,37 @@ public class Biblioteca {
         biblioteca.exibirMenu();
     }
 
+    public void exibirMenu() {
+        int opcao = 0;
+
+        while (opcao != 8) {
+            System.out.println("\n===== MENU =====");
+            System.out.println("1 - Cadastro de Cliente");
+            System.out.println("2 - Cadastro de Livro");
+            System.out.println("3 - Buscar Livro por Título");
+            System.out.println("4 - Buscar Livro por Autor");
+            System.out.println("5 - Empréstimo de Livro");
+            System.out.println("6 - Devolução de Livro");
+            System.out.println("7 - Verificar Disponibilidade de Livro");
+            System.out.println("8 - Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = Integer.parseInt(scanner.nextLine());
+
+            switch (opcao) {
+                case 1 -> cadastrarCliente();
+                case 2 -> cadastrarLivro();
+                case 3 -> buscarPorTitulo();
+                case 4 -> buscarPorAutor();
+                case 5 -> emprestarLivro();
+                case 6 -> devolverLivro();
+                case 7 -> verificarDisponibilidade();
+                case 8 -> System.out.println("Saindo...");
+                default -> System.out.println("Opção inválida!");
+            }
+        }
+    }
+
+    // Métodos de interação com o cliente
     public void cadastrarCliente() {
         System.out.print("Digite o nome do cliente: ");
         String nome = scanner.nextLine();
@@ -48,15 +79,15 @@ public class Biblioteca {
         System.out.print("Esse livro é raro? (s/n): ");
         String resposta = scanner.nextLine();
 
+        Livro livro;
         if (resposta.equalsIgnoreCase("s")) {
             System.out.print("Digite a explicação da raridade do livro: ");
             String explicacao = scanner.nextLine();
-            LivroRaro livroRaro = new LivroRaro(nomeLivro, autor, genero, ano, explicacao);
-            livros.add(livroRaro);
+            livro = new LivroRaro(nomeLivro, autor, genero, ano, explicacao);
         } else {
-            LivroComum livroComum = new LivroComum(nomeLivro, autor, genero, ano);
-            livros.add(livroComum);
+            livro = new LivroComum(nomeLivro, autor, genero, ano);
         }
+        livros.add(livro);
         System.out.println("Livro cadastrado com sucesso!");
     }
 
@@ -92,15 +123,12 @@ public class Biblioteca {
 
         for (Livro livro : livros) {
             if (livro.getNomeLivro().equalsIgnoreCase(titulo)) {
-                if (livro.isDisponivel() && livro.podeSerEmprestado()) {
+                if (livro.podeSerEmprestado()) {
                     livro.setDisponivel(false);
                     System.out.println("Empréstimo realizado com sucesso!");
                     return;
-                } else if (!livro.isDisponivel()) {
-                    System.out.println("Livro não disponível.");
-                    return;
-                } else if (!livro.podeSerEmprestado()) {
-                    System.out.println("Este livro é raro e não pode ser emprestado.");
+                } else {
+                    System.out.println("Este livro não pode ser emprestado.");
                     return;
                 }
             }
@@ -144,35 +172,5 @@ public class Biblioteca {
             }
         }
         System.out.println("Livro não encontrado.");
-    }
-
-    public void exibirMenu() {
-        int opcao = 0;
-
-        while (opcao != 8) {
-            System.out.println("\n===== MENU =====");
-            System.out.println("1 - Cadastro de Cliente");
-            System.out.println("2 - Cadastro de Livro");
-            System.out.println("3 - Buscar Livro por Título");
-            System.out.println("4 - Buscar Livro por Autor");
-            System.out.println("5 - Empréstimo de Livro");
-            System.out.println("6 - Devolução de Livro");
-            System.out.println("7 - Verificar Disponibilidade de Livro");
-            System.out.println("8 - Sair");
-            System.out.print("Escolha uma opção: ");
-            opcao = Integer.parseInt(scanner.nextLine());
-
-            switch (opcao) {
-                case 1 -> cadastrarCliente();
-                case 2 -> cadastrarLivro();
-                case 3 -> buscarPorTitulo();
-                case 4 -> buscarPorAutor();
-                case 5 -> emprestarLivro();
-                case 6 -> devolverLivro();
-                case 7 -> verificarDisponibilidade();
-                case 8 -> System.out.println("Saindo...");
-                default -> System.out.println("Opção inválida!");
-            }
-        }
     }
 }

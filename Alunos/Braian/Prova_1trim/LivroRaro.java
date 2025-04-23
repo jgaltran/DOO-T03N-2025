@@ -14,17 +14,13 @@ public class LivroRaro extends Livro {
 
     @Override
     public boolean podeSerEmprestado() {
-        if (isDisponivel()) {
-            System.out.println("O livro " + getNomeLivro() + " pode ser emprestado.");
-            return true;
-        } else {
-            System.out.println("O livro " + getNomeLivro() + " não pode ser emprestado.");
-            return false;
+        // Livros raros não podem ser emprestados
+        System.out.println("O livro " + getNomeLivro() + " é raro e não pode ser emprestado.");
+        return false;
     }
-      }
 
     @Override
     public String toString() {
-        return super.toString() + " | Explicação: " + explicacaoRaridade;
+        return super.toString() + " | Explicação da raridade: " + explicacaoRaridade;
     }
 }

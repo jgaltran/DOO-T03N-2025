@@ -14,51 +14,16 @@ public class Cliente {
         this.cidadeCliente = cidadeCliente;
         this.bairroCliente = bairroCliente;
         this.ruaCliente = ruaCliente;
-        this.temEmprestimo = false;
+        this.temEmprestimo = false; // Inicialmente o cliente não tem empréstimos pendentes
     }
 
+    // Getters e Setters
     public String getNomeCliente() {
         return nomeCliente;
     }
 
     public boolean isTemEmprestimo() {
         return temEmprestimo;
-    }
-
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
-    }
-
-    public Integer getIdadeCliente() {
-        return idadeCliente;
-    }
-
-    public void setIdadeCliente(Integer idadeCliente) {
-        this.idadeCliente = idadeCliente;
-    }
-
-    public String getCidadeCliente() {
-        return cidadeCliente;
-    }
-
-    public void setCidadeCliente(String cidadeCliente) {
-        this.cidadeCliente = cidadeCliente;
-    }
-
-    public String getBairroCliente() {
-        return bairroCliente;
-    }
-
-    public void setBairroCliente(String bairroCliente) {
-        this.bairroCliente = bairroCliente;
-    }
-
-    public String getRuaCliente() {
-        return ruaCliente;
-    }
-
-    public void setRuaCliente(String ruaCliente) {
-        this.ruaCliente = ruaCliente;
     }
 
     public void setTemEmprestimo(boolean temEmprestimo) {

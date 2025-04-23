@@ -1,5 +1,4 @@
 package Alunos.Braian.Prova_1trim;
-
 public class LivroComum extends Livro {
 
     public LivroComum(String nomeLivro, String autor, String genero, Integer anoPublicacao) {
@@ -14,7 +13,6 @@ public class LivroComum extends Livro {
         } else {
             System.out.println("O livro " + getNomeLivro() + " não pode ser emprestado.");
             return false;
+        }
     }
-      }
-
 }

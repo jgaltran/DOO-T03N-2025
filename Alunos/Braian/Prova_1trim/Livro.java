@@ -12,10 +12,9 @@ public class Livro {
         this.autor = autor;
         this.genero = genero;
         this.anoPublicacao = anoPublicacao;
-        this.disponivel = true;
+        this.disponivel = true; // Inicialmente todos os livros são disponíveis
     }
 
-    // Getters and Setters
     public String getNomeLivro() {
         return nomeLivro;
     }
@@ -28,6 +27,10 @@ public class Livro {
         return genero;
     }
 
+    public Integer getAnoPublicacao() {
+        return anoPublicacao;
+    }
+
     public boolean isDisponivel() {
         return disponivel;
     }
@@ -36,17 +39,12 @@ public class Livro {
         this.disponivel = disponivel;
     }
 
-    public Integer getAnoPublicacao() {
-        return anoPublicacao;
+    public boolean podeSerEmprestado() {
+        return true; // Método padrão para livros comuns, que pode ser sobrescrito pelas subclasses
     }
 
     @Override
     public String toString() {
         return "Livro: " + nomeLivro + " | Autor: " + autor + " | Ano: " + anoPublicacao + " | Disponibilidade: " + (disponivel ? "Disponível" : "Indisponível");
     }
-
-    public boolean podeSerEmprestado() {
-        return true; // Por padrão, todos os livros podem ser emprestados
-    }
-
 }
