@@ -13,6 +13,6 @@ public class Raro extends Livros {
 
     @Override
     public void registrarDevolucao() {
-        System.out.println("Livro raro não pode ser devolvido pois não foi emprestado.");
+        System.out.println("Livro raro não foi emprestado.");
     }
 }
