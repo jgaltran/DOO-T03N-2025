@@ -44,7 +44,7 @@ public class LivroManager {
         Date dataDevolucao = new Date();
         long diferencaEmMillis = dataDevolucao.getTime() - dataEmprestimo.getTime();
         int diferenca = (int) TimeUnit.DAYS.convert(diferencaEmMillis, TimeUnit.MILLISECONDS);
-        if(diferenca > 7){
+        if((diferenca - 7) > 7){
             System.out.println("Cobre: R$" + (diferenca * 3.50) + " por ter ficado " + diferenca + "dias com o livro");
         }
         livro.devolverLivro();
