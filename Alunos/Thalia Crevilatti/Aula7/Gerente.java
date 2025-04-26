@@ -1,3 +1,4 @@
+// Gerente
 public class Gerente {
     String nome;
     int idade;

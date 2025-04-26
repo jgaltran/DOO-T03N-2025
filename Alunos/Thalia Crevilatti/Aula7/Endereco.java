@@ -1,3 +1,4 @@
+// Endereço
 public class Endereco {
     String estado;
     String cidade;
