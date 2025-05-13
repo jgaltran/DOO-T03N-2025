@@ -1,34 +1,33 @@
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Create addresses first
+        
         Endereco enderecoLoja = new Endereco("PR", "Cascavel", "Centro", "R. Paraná", "123", "Sala 1");
         Endereco enderecoVendedor1 = new Endereco("PR", "Cascavel", "Cascavel Velho", "R. Gilberto Freire", "456", null);
         Endereco enderecoVendedor2 = new Endereco("PR", "Cascavel", "Centro", "R. Paraná", "789", "Apto 2");
         Endereco enderecoCliente1 = new Endereco("PR", "Cascavel", "Centro", "R. Paraná", "101", null);
         Endereco enderecoCliente2 = new Endereco("PR", "Cascavel", "Cascavel Velho", "R. Gilberto Freire", "202", "Casa");
 
-        // Create Loja
+        
         Loja loja = new Loja("My Plant", "Gabrielinha's Garden Center LTDA", 
             "12.345.678/0001-90", enderecoLoja);
 
-        // Create Vendedores
+       
         Vendedor vendedor1 = new Vendedor("João da Silva", 30, enderecoVendedor1, loja, 3000.0);
         Vendedor vendedor2 = new Vendedor("Maria Oliveira", 28, enderecoVendedor2, loja, 5250.0);
         loja.adicionarVendedor(vendedor1);
         loja.adicionarVendedor(vendedor2);
 
-        // Create Clientes
+        
         Cliente cliente1 = new Cliente("Ana Santos", 25, enderecoCliente1);
         Cliente cliente2 = new Cliente("Carlos Pereira", 35, enderecoCliente2);
         loja.adicionarCliente(cliente1);
         loja.adicionarCliente(cliente2);
 
-        // Create Gerente
+        
         Gerente gerente = new Gerente("Pedro Souza", 40, enderecoLoja, loja, 8000.0);
         loja.adicionarGerente(gerente);
 
@@ -97,22 +96,22 @@ public class Main {
     }
 
     private static void criarPedido(Loja loja, Cliente cliente, Vendedor vendedor) {
-        // Criar alguns itens de exemplo
+        
         List<Item> itens = new ArrayList<>();
         itens.add(new Item(1, "Rosa", "Flor", 15.99));
         itens.add(new Item(2, "Vaso Pequeno", "Acessório", 29.90));
         itens.add(new Item(3, "Adubo", "Fertilizante", 12.50));
     
-        // Processar o pedido
+        
         ProcessaPedido processador = new ProcessaPedido();
         Pedido pedido = processador.processar(1001, cliente, vendedor, loja, itens);
         
-        // Mostrar detalhes do pedido
+        
         System.out.println("\n=== DETALHES DO PEDIDO ===");
         pedido.gerarDescricaoVenda();
         System.out.println("Itens do pedido:");
         
-        // Corrigido: usando getItens() que agora está implementado
+        
         for (Item item : pedido.getItens()) {
             item.gerarDescricao();
         }
