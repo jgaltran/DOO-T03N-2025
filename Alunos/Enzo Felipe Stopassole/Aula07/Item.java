@@ -12,16 +12,11 @@ public class Item {
     }
 
     public void gerarDescricao() {
-        System.out.printf("Item ID: %d - %s (%s) - R$ %.2f%n", id, nome, tipo, valor);
+
+        System.out.println("Item ID: " + id + ", Nome: " + nome + 
+                         ", Tipo: " + tipo + ", Valor: R$" + valor);
     }
 
-    // Getters and setters
-    public int getId() { return id; }
-    public String getNome() { return nome; }
-    public String getTipo() { return tipo; }
+    // Getters
     public double getValor() { return valor; }
-    public void setId(int id) { this.id = id; }
-    public void setNome(String nome) { this.nome = nome; }
-    public void setTipo(String tipo) { this.tipo = tipo; }
-    public void setValor(double valor) { this.valor = valor; }
 }

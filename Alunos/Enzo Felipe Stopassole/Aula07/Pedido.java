@@ -11,42 +11,30 @@ public class Pedido {
     private Loja loja;
     private List<Item> itens;
 
-    public Pedido(int id, Date dataCriacao, Cliente cliente, Vendedor vendedor, Loja loja, List<Item> itens) {
+    public Pedido(int id, Date dataCriacao, Cliente cliente, Vendedor vendedor, 
+                 Loja loja, List<Item> itens, int diasVencimento) {
+
         this.id = id;
         this.dataCriacao = dataCriacao;
         this.cliente = cliente;
         this.vendedor = vendedor;
         this.loja = loja;
         this.itens = itens;
-        this.dataVencimentoReserva = new Date(dataCriacao.getTime() + (3L * 24 * 60 * 60 * 1000));
+
+        this.dataVencimentoReserva = new Date(dataCriacao.getTime() + (long) diasVencimento * 24 * 60 * 60 * 1000);
     }
 
     public double calcularValorTotal() {
-        double total = 0;
-        for (Item item : itens) {
-            total += item.getValor();
-        }
-        return total;
+        return itens.stream().mapToDouble(Item::getValor).sum();
     }
 
     public void gerarDescricaoVenda() {
-        System.out.printf("Pedido criado em %s - Valor total: R$ %.2f%n", dataCriacao, calcularValorTotal());
+        System.out.println("Pedido criado em: " + dataCriacao + 
+                         ", Valor total: R$" + calcularValorTotal());
     }
 
     // Getters
-    public List<Item> getItens() {
-        return this.itens;
-    }
-
-    public Date getDataVencimentoReserva() {
-        return dataVencimentoReserva;
-    }
-
-    public void setDataPagamento(Date dataPagamento) {
-        this.dataPagamento = dataPagamento;
-    }
-
-    public int getId() {
-        return this.id;
-    }
+    public Date getDataVencimentoReserva() { return dataVencimentoReserva; }
+    public Date getDataPagamento() { return dataPagamento; }
+    public void setDataPagamento(Date dataPagamento) { this.dataPagamento = dataPagamento; }
 }

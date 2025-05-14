@@ -11,8 +11,9 @@ public abstract class Pessoa {
 
     public abstract void apresentarse();
 
-    // Getters
+    // Getters e Setters
     public String getNome() { return nome; }
     public int getIdade() { return idade; }
     public Endereco getEndereco() { return endereco; }
 }
+

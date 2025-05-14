@@ -1,24 +1,27 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Loja {
+public class Loja<Clientes> {
     private String nomeFantasia;
     private String razaoSocial;
     private String cnpj;
-    private Endereco endereco;
+    private String cidade;
+    private String bairro;
+    private String rua;
     private List<Vendedor> vendedores;
     private List<Cliente> clientes;
-    private List<Gerente> gerentes;
 
-    public Loja(String nomeFantasia, String razaoSocial, String cnpj, Endereco endereco) {
+    public Loja(String nomeFantasia, String razaoSocial, String cnpj, String cidade, String bairro, String rua) {
         this.nomeFantasia = nomeFantasia;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
-        this.endereco = endereco;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.rua = rua;
         this.vendedores = new ArrayList<>();
         this.clientes = new ArrayList<>();
-        this.gerentes = new ArrayList<>();
     }
+
 
     public int contarClientes() {
         return clientes.size();
@@ -27,12 +30,12 @@ public class Loja {
     public int contarVendedores() {
         return vendedores.size();
     }
-
+    
     public void apresentarLoja() {
+        String endereco = "Endereço: " + cidade + ", " + bairro + ", " + rua;
         System.out.println("Nome Fantasia: " + nomeFantasia);
-        System.out.println("Razão Social: " + razaoSocial);
         System.out.println("CNPJ: " + cnpj);
-        endereco.apresentarLogradouro();
+        System.out.println(endereco);
     }
 
     public void adicionarVendedor(Vendedor vendedor) {
@@ -42,17 +45,36 @@ public class Loja {
     public void adicionarCliente(Cliente cliente) {
         clientes.add(cliente);
     }
-
-    public void adicionarGerente(Gerente gerente) {
-        gerentes.add(gerente);
+   
+    public String getNomeFantasia() {
+        return nomeFantasia;
     }
 
-    // Getters
-    public String getNomeFantasia() { return nomeFantasia; }
-    public String getRazaoSocial() { return razaoSocial; }
-    public String getCnpj() { return cnpj; }
-    public Endereco getEndereco() { return endereco; }
-    public List<Vendedor> getVendedores() { return vendedores; }
-    public List<Cliente> getClientes() { return clientes; }
-    public List<Gerente> getGerentes() { return gerentes; }
+    public String getRazaoSocial() {
+        return razaoSocial;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public List<Vendedor> getVendedores() {
+        return vendedores;
+    }
+
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
 }
