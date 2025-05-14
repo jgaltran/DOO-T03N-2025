@@ -12,6 +12,7 @@ public class Item {
     }
 
     public void gerarDescricao() {
+
         System.out.println("Item ID: " + id + ", Nome: " + nome + 
                          ", Tipo: " + tipo + ", Valor: R$" + valor);
     }

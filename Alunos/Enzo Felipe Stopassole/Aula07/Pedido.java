@@ -13,12 +13,14 @@ public class Pedido {
 
     public Pedido(int id, Date dataCriacao, Cliente cliente, Vendedor vendedor, 
                  Loja loja, List<Item> itens, int diasVencimento) {
+
         this.id = id;
         this.dataCriacao = dataCriacao;
         this.cliente = cliente;
         this.vendedor = vendedor;
         this.loja = loja;
         this.itens = itens;
+
         this.dataVencimentoReserva = new Date(dataCriacao.getTime() + (long) diasVencimento * 24 * 60 * 60 * 1000);
     }
 
