@@ -1,9 +1,9 @@
 package Alunos.Braian.Aula09;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.*;
 
 public class Calculadora extends JFrame {
     private final JTextField display;
@@ -13,6 +13,7 @@ public class Calculadora extends JFrame {
         JFrame frame = new JFrame("Calculadora Simples");
         frame.setSize(400, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null); // Centraliza a janela
 
         currentInput = new StringBuilder();
 
@@ -38,10 +39,11 @@ public class Calculadora extends JFrame {
         }
 
         panel.add(buttonPanel, BorderLayout.CENTER);
-        add(panel);
+        frame.add(panel);
+        frame.setVisible(true);
     }
-
     private class ButtonClickListener implements ActionListener {
+        @Override
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
 
