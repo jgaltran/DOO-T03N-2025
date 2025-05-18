@@ -1,11 +1,9 @@
 package Alunos.Braian.Aula09;
 
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
 
 public class Calculadora extends JFrame {
     private final JTextField display;
@@ -102,7 +100,6 @@ public class Calculadora extends JFrame {
     }
 }
 
-// Classe de exceção personalizada
 class CalculadoraException extends Exception {
     public CalculadoraException(String mensagem) {
         super(mensagem);
