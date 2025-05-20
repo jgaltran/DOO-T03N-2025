@@ -1,3 +1,4 @@
+
 # Resumo de Paradigmas de Programação
 
 ## Paradigmas de Programação: Imperativo e Declarativo
@@ -23,6 +24,9 @@ public class Paridade {
         }
     }
 }
+```
+
+
 Explicação:
 No Java, a gente precisa dizer tudo: pegar o número, fazer a conta (módulo por 2) e depois decidir o que mostrar. Ou seja, controlamos todo o processo.
 
@@ -36,4 +40,3 @@ Explicação:
 No Prolog, a gente só diz a regra: "um número é par se o resto da divisão dele por 2 for zero". Depois é só perguntar se o número é par, e o sistema responde.
 
 Aluno: Beatriz De Araújo Filipini, T03N 
-Data: 09/04/2025

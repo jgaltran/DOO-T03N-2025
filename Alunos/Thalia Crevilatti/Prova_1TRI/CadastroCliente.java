@@ -1,3 +1,4 @@
+// CadastroCliente.java
 public class CadastroCliente {
     private String nome;
     private String endereco;

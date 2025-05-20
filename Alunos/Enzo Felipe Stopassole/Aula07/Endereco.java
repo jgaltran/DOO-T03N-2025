@@ -2,6 +2,7 @@ public class Endereco {
     private String estado;
     private String cidade;
     private String bairro;
+
     private String numero;
     private String complemento;
 
@@ -9,11 +10,13 @@ public class Endereco {
         this.estado = estado;
         this.cidade = cidade;
         this.bairro = bairro;
+
         this.numero = numero;
         this.complemento = complemento;
     }
 
     public void apresentarLogradouro() {
+
         System.out.println("Endereço: " + cidade + "/" + estado + ", " + bairro + 
                          ", " + numero + " - " + complemento);
     }
@@ -44,5 +47,5 @@ public class Endereco {
     public void setComplemento(String complemento) {
         this.complemento = complemento;
     }
-    
+
 }
