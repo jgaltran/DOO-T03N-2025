@@ -1,1 +1,115 @@
 
+import javax.swing.*;
+import java.awt.*;
+
+// Exceção personalizada para erros na calculadora
+class CalculatorException extends Exception {
+    public CalculatorException(String message) {
+        super(message);
+    }
+}
+
+public class Calculator extends JFrame {
+    private JTextField number1Field, number2Field, resultField;
+    private JButton addButton, subtractButton, multiplyButton, divideButton;
+
+    public Calculator() {
+        // Configuração da janela
+        setTitle("Calculadora Simples");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridLayout(5, 2, 10, 10));
+        setSize(300, 200);
+
+        // Inicialização dos componentes
+        JLabel number1Label = new JLabel("Número 1:");
+        number1Field = new JTextField(10);
+        JLabel number2Label = new JLabel("Número 2:");
+        number2Field = new JTextField(10);
+        JLabel resultLabel = new JLabel("Resultado:");
+        resultField = new JTextField(10);
+        resultField.setEditable(false);
+
+        addButton = new JButton("+");
+        subtractButton = new JButton("-");
+        multiplyButton = new JButton("×");
+        divideButton = new JButton("÷");
+
+        // Adicionando componentes à janela
+        add(number1Label);
+        add(number1Field);
+        add(number2Label);
+        add(number2Field);
+        add(resultLabel);
+        add(resultField);
+        add(addButton);
+        add(subtractButton);
+        add(multiplyButton);
+        add(divideButton);
+
+        // Listeners para os botões
+        addButton.addActionListener(e -> performOperation('+'));
+        subtractButton.addActionListener(e -> performOperation('-'));
+        multiplyButton.addActionListener(e -> performOperation('*'));
+        divideButton.addActionListener(e -> performOperation('/'));
+    }
+
+    private void performOperation(char operator) {
+        try {
+            // Validação e conversão dos números
+            String num1Text = number1Field.getText().trim();
+            String num2Text = number2Field.getText().trim();
+
+            if (num1Text.isEmpty() || num2Text.isEmpty()) {
+                throw new CalculatorException("Por favor, preencha ambos os campos.");
+            }
+
+            double num1, num2;
+            try {
+                num1 = Double.parseDouble(num1Text);
+                num2 = Double.parseDouble(num2Text);
+            } catch (NumberFormatException e) {
+                throw new CalculatorException("Por favor, insira apenas números válidos.");
+            }
+
+            // Verificação de divisão por zero
+            if (operator == '/' && num2 == 0) {
+                throw new CalculatorException("Divisão por zero não é permitida.");
+            }
+
+            // Realização da operação
+            double result;
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+                default:
+                    throw new CalculatorException("Operação inválida.");
+            }
+
+            // Exibição do resultado
+            resultField.setText(String.format("%.2f", result));
+
+        } catch (CalculatorException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro inesperado: " + e.getMessage(),
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            Calculator calc = new Calculator();
+            calc.setVisible(true);
+        });
+    }
+}
