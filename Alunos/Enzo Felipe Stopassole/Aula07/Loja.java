@@ -27,11 +27,9 @@ public class Loja<Clientes> {
         return clientes.size();
     }
 
-   
     public int contarVendedores() {
         return vendedores.size();
     }
-
     
     public void apresentarLoja() {
         String endereco = "Endereço: " + cidade + ", " + bairro + ", " + rua;
@@ -40,7 +38,6 @@ public class Loja<Clientes> {
         System.out.println(endereco);
     }
 
-  
     public void adicionarVendedor(Vendedor vendedor) {
         vendedores.add(vendedor);
     }
@@ -48,7 +45,6 @@ public class Loja<Clientes> {
     public void adicionarCliente(Cliente cliente) {
         clientes.add(cliente);
     }
-
    
     public String getNomeFantasia() {
         return nomeFantasia;

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-
+// Biblioteca.java
 public class Biblioteca {
     private List<Livro> livros = new ArrayList<>();
     private List<Cliente> clientes = new ArrayList<>();
