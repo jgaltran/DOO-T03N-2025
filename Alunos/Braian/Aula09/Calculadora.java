@@ -1,9 +1,16 @@
 package Alunos.Braian.Aula09;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 public class Calculadora extends JFrame {
     private final JTextField display;
@@ -13,7 +20,7 @@ public class Calculadora extends JFrame {
         JFrame frame = new JFrame("Calculadora Simples");
         frame.setSize(400, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null); // Centraliza a janela
+        frame.setLocationRelativeTo(null);
 
         currentInput = new StringBuilder();
 
@@ -42,68 +49,67 @@ public class Calculadora extends JFrame {
         frame.add(panel);
         frame.setVisible(true);
     }
+
     private class ButtonClickListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
 
-            try {
-                if (command.equals("=")) {
+            if (command.equals("=")) {
+                try {
                     calcular();
-                } else {
-                    if (display.getText().startsWith("Erro")) {
-                        currentInput.setLength(0);
-                    }
-                    if ("+-*/".contains(command)) {
-                        currentInput.append(" ").append(command).append(" ");
-                    } else {
-                        currentInput.append(command);
-                    }
-                    display.setText(currentInput.toString());
+                } catch (CalculadoraException ex) {
+                    ex.exibirMensagem(Calculadora.this, display);
+                    currentInput.setLength(0);
                 }
-            } catch (CalculadoraException ex) {
-                display.setText("Erro: " + ex.getMessage());
-                currentInput.setLength(0);
+            } else {
+                if (display.getText().startsWith("Erro") || display.getText().contains("ERRO")) {
+                    currentInput.setLength(0);
+                }
+
+                if ("+-*/".contains(command)) {
+                    currentInput.append(" ").append(command).append(" ");
+                } else {
+                    currentInput.append(command);
+                }
+
+                display.setText(currentInput.toString());
             }
         }
     }
 
     private void calcular() throws CalculadoraException {
+        String expression = currentInput.toString().trim();
+        String[] tokens = expression.split(" ");
+        if (tokens.length != 3) throw new ExpressaoInvalidaException();
+
+        double num1, num2;
         try {
-            String expression = currentInput.toString().trim();
-            String[] tokens = expression.split(" ");
-            if (tokens.length != 3) throw new CalculadoraException("Expressão inválida!");
-
-            double num1 = Double.parseDouble(tokens[0]);
-            double num2 = Double.parseDouble(tokens[2]);
-            String operator = tokens[1];
-
-            double result;
-            switch (operator) {
-                case "+" -> result = num1 + num2;
-                case "-" -> result = num1 - num2;
-                case "*" -> result = num1 * num2;
-                case "/" -> {
-                    if (num2 == 0) throw new CalculadoraException("Divisão por zero!");
-                    result = num1 / num2;
-                }
-                default -> throw new CalculadoraException("Operador inválido!");
-            }
-
-            display.setText(String.valueOf(result));
-            currentInput.setLength(0);
+            num1 = Double.parseDouble(tokens[0]);
+            num2 = Double.parseDouble(tokens[2]);
         } catch (NumberFormatException e) {
-            throw new CalculadoraException("Entrada inválida! Use apenas números.");
+            throw new EntradaInvalidaException();
         }
+
+        String operator = tokens[1];
+        double result;
+
+        switch (operator) {
+            case "+" -> result = num1 + num2;
+            case "-" -> result = num1 - num2;
+            case "*" -> result = num1 * num2;
+            case "/" -> {
+                if (num2 == 0) throw new DivisaoPorZeroException();
+                result = num1 / num2;
+            }
+            default -> throw new ExpressaoInvalidaException();
+        }
+
+        display.setText(String.valueOf(result));
+        currentInput.setLength(0);
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Calculadora::new);
-    }
-}
-
-class CalculadoraException extends Exception {
-    public CalculadoraException(String mensagem) {
-        super(mensagem);
     }
 }
